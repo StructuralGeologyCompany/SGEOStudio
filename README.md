@@ -39,3 +39,4 @@ SGEO Studio uses a local licence system — no internet connection is required f
 
 For license enquiries, contact sales@sgeo.fi.
 
+<img width="1627" height="1669" alt="SGEOStudio" src="https://github.com/user-attachments/assets/cc1aaed1-2859-4e78-8540-8cd71859f110" />
