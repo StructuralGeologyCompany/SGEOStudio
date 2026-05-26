@@ -1,4 +1,4 @@
-<img width="1761" height="338" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
+<img width="1000" height="200" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
 
 
 ##
