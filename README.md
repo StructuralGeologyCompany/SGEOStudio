@@ -1,6 +1,9 @@
+<img width="1761" height="338" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
+
+
 # SGEOStudio
 
-From core angles to stereonet in seconds. SGEO Studio is a desktop tool for structural drillcore logging, orientation desurveying, and visualisation — built for the field geologist who wants results, not spreadsheets.
+From core to stereonet in seconds. SGEO Studio is a desktop tool for structural drillcore logging, orientation desurveying, and visualisation — built for the field geologist who wants results, not spreadsheets.
 
 ## Download
 
