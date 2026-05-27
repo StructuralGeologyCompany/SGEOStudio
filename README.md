@@ -9,7 +9,7 @@ From core to stereonet in seconds. SGEO Studio is a desktop tool for structural 
 
 ## Download
 
-- (https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.8.3)
+- (https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.8.7)
 
 A free 7-day trial is included with every installation. No account or internet connection required.
 
