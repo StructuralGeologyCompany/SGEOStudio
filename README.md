@@ -36,7 +36,7 @@ A free 7-day trial is included with every installation. No account or internet c
 
 ## Running on macOS and Windows
 
-The app is tested on macOS 12 Monterey and later (Apple Silicon and Intel) and Windows 10 64-bit and later. If you encounter issues, contact us at sales@sgeo.fi.
+The app is tested on macOS 26(Apple Silicon) and Windows 11 64-bit. If you encounter issues, contact us at sales@sgeo.fi.
 
 ## Licensing
 
