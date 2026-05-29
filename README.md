@@ -1,3 +1,4 @@
+[SGEO Studio - User Guide.pdf](https://github.com/user-attachments/files/28378006/SGEO.Studio.-.User.Guide.pdf)
 <img width="1000" height="200" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
 
 
