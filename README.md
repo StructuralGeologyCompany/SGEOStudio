@@ -1,16 +1,16 @@
-[SGEO Studio - User Guide.pdf](https://github.com/user-attachments/files/28378006/SGEO.Studio.-.User.Guide.pdf)
-<img width="1000" height="200" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
-
-
-##
+<img width="1000" alt="SGEO Studio" src="https://github.com/user-attachments/assets/e2ee5c12-e4fd-44e6-ad63-0b4673886196" />
 
 From core to stereonet in seconds. SGEO Studio is a desktop tool for structural drillcore logging, orientation desurveying, and visualisation — built for the field geologist who wants results, not spreadsheets.
 
-##
+---
+
+### 📖 [User Guide (PDF)](https://github.com/user-attachments/files/28378006/SGEO.Studio.-.User.Guide.pdf)
+
+---
 
 ## Download
 
-- (https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.8.8)
+[**Download SGEO Studio v1.8.8**](https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.8.8)
 
 A free 7-day trial is included with every installation. No account or internet connection required.
 
@@ -35,14 +35,14 @@ A free 7-day trial is included with every installation. No account or internet c
 - Export all data to CSV or Excel at any time, or batch-export figures for all holes in one step.
 - Use the standalone stereonet (free, no licence required) for field data or any orientation dataset not tied to drillholes.
 
-## Running on macOS and Windows
+## System requirements
 
-The app is tested on macOS 26(Apple Silicon) and Windows 11 64-bit. If you encounter issues, contact us at sales@sgeo.fi.
+The app runs on macOS 26 (Apple Silicon) and Windows 11 64-bit. If you encounter issues, contact us at sales@sgeo.fi.
 
 ## Licensing
 
 SGEO Studio uses a local licence system — no internet connection is required for validation. A free 7-day trial of all logging features is included automatically on first install. After the trial, a paid licence is required to continue using the logging features. The standalone stereonet is permanently free.
 
-For license enquiries, contact sales@sgeo.fi.
+For licence enquiries, contact sales@sgeo.fi.
 
-<img width="1627" height="1669" alt="SGEOStudio" src="https://github.com/user-attachments/assets/cc1aaed1-2859-4e78-8540-8cd71859f110" />
+<img width="1627" alt="SGEOStudio" src="https://github.com/user-attachments/assets/cc1aaed1-2859-4e78-8540-8cd71859f110" />
