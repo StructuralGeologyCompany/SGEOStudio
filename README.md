@@ -2,15 +2,12 @@
 
 From core to stereonet in seconds. SGEO Studio is a desktop tool for structural drillcore logging, orientation desurveying, and visualisation — built for the field geologist who wants results, not spreadsheets.
 
----
-
-### 📖 [User Guide (PDF)](https://github.com/user-attachments/files/28378006/SGEO.Studio.-.User.Guide.pdf)
 
 ---
 
 ## Download
 
-[**Download SGEO Studio v1.8.8**](https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.8.8)
+[**Download SGEO Studio v1.8.8**](https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v1.9.0)
 
 A free 7-day trial is included with every installation. No account or internet connection required.
 
