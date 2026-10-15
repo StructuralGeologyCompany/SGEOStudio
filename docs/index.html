@@ -206,6 +206,7 @@
   .gallery figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
   .gallery img { display: block; width: 100%; height: auto; }
   .gallery figcaption { padding: 12px 16px; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
+  .gallery figure.wide { grid-column: 1 / -1; }
   .gallery .placeholder { aspect-ratio: 16/10; display: grid; place-items: center; color: var(--faint); font-size: .9rem; background: var(--surface-alt); }
 
   /* Free stereonet callout */
@@ -408,10 +409,11 @@
       <p>Selecting a measurement in one view highlights it in every other, and the filters, sets and colours are shared.</p>
     </div>
     <div class="gallery">
-      <figure><img src="img/stereonet.png" alt="Stereonet with density contours and orientation sets" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Stereonet</div>'"><figcaption>Stereonet with density contouring per set, slickenlines as arrows, orientation sets and their statistics.</figcaption></figure>
+      <figure><img src="img/stereonet.png" alt="Stereonet with density contours and orientation sets" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Stereonet</div>'"><figcaption>Stereonet with the bedding poles contoured, the fault planes as great circles with their slickenlines, and the statistics of each set.</figcaption></figure>
       <figure><img src="img/section.png" alt="Section with hole traces, structures and a mesh cut" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Section</div>'"><figcaption>Section through a fence of holes with lithology strips, structures as ticks, the ground line and the cuts of the modelled surfaces.</figcaption></figure>
-      <figure><img src="img/threed.png" alt="3D view with hole traces, plane discs and a mesh" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>3D view</div>'"><figcaption>3D scene with plane discs, lithology tubes, two faults and a bedding surface offset across one of them.</figcaption></figure>
+      <figure><img src="img/threed.png" alt="3D view with hole traces, plane discs and a mesh" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>3D view</div>'"><figcaption>3D scene with plane discs, lithology tubes, two undulating faults and a bedding surface offset across one of them, with the mesh edges shown.</figcaption></figure>
       <figure><img src="img/downhole.png" alt="Downhole log of several holes side by side" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Downhole log</div>'"><figcaption>Downhole logs of several holes with lithology, assay bars and orientation tracks.</figcaption></figure>
+      <figure class="wide"><img src="img/map.png" alt="Plan view with collars, hole traces, section lines, fault traces and strike and dip symbols" loading="lazy" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Plan</div>'"><figcaption>Plan with the collars, the hole traces, the section lines, the traces of the modelled surfaces and the structures as strike and dip symbols coloured by type.</figcaption></figure>
     </div>
   </div>
 </section>
