@@ -2,10 +2,10 @@
   <img src="docs/img/logo.png" alt="SGEO Studio" width="360">
 </p>
 
-<h3 align="center">From core to stereonet in seconds.</h3>
+<h3 align="center">From logging to models in seconds.</h3>
 
 <p align="center">
-  Structural drillcore logging, orientation desurveying, stereonet analysis, sections, 3D and downhole logs, in one desktop application for macOS and Windows.
+  Structural drillcore logging, stereonet analysis, sections, downhole logs and 3D modelling with faults, offsets and topography, in one desktop application for macOS and Windows.
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 ---
 
-**SGEO Studio 1.9.6** is the current release, and **2.0.0 Cataclasite**, a rewrite of the application with sections, meshes and a much faster table, is coming soon. Every installation includes a free trial of all features (seven days in 1.9.6, fourteen in 2.0), with no account and no internet connection required; the standalone stereonet stays free without limit, and after the trial a logging project opens read-only until a licence is installed.
+**SGEO Studio 1.9.6** is the current release, and **2.0.0 Cataclasite**, a rewrite of the application with sections, a 3D modelling toolset, meshes and a much faster table, is in final testing. Every installation includes a free trial of all features (seven days in 1.9.6, fourteen in 2.0), with no account and no internet connection required; the standalone stereonet stays free without limit, and after the trial a logging project opens read-only until a licence is installed.
 
 The application runs on macOS (Apple silicon) and Windows 11 64-bit. Download the installer for your platform from the [Releases](https://github.com/StructuralGeologyCompany/SGEOStudio/releases) page. On macOS, right-click the app and choose Open the first time, since the build is not notarised.
 

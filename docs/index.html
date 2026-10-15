@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SGEO Studio · structural drillcore logging and stereonet analysis</title>
-<meta name="description" content="SGEO Studio is a desktop application for structural drillcore logging, orientation desurveying, stereonet analysis, sections, 3D and downhole logs. Free trial for macOS and Windows.">
+<title>SGEO Studio · structural logging, stereonet analysis and 3D modelling</title>
+<meta name="description" content="SGEO Studio is a desktop application for structural drillcore logging, stereonet analysis, sections, downhole logs and 3D structural modelling with faults, offsets and topography. Free trial for macOS and Windows.">
 <meta property="og:title" content="SGEO Studio">
-<meta property="og:description" content="From core to stereonet in seconds. Structural drillcore logging and orientation analysis for macOS and Windows.">
+<meta property="og:description" content="From logging to models in seconds. Structural logging, stereonet analysis and 3D modelling for macOS and Windows.">
 <meta property="og:image" content="img/hero.png">
 <link rel="icon" type="image/png" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,7 +189,8 @@
   }
 
   /* Workflow */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
+  @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
   .step { position: relative; padding: 26px 24px 28px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
   .step::before {
@@ -260,9 +261,9 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="release-chip"><span class="dot"></span><b>Version 1.9.6</b> available now · <b>2.0.0 Cataclasite</b> coming soon</div>
-    <h1>From core to stereonet in seconds.</h1>
-    <p class="lead">SGEO Studio is a desktop application for structural drillcore logging, orientation desurveying and analysis. Log alpha, beta and gamma, and see the true orientations on the net, in section, in 3D and on the downhole log as you type.</p>
+    <div class="release-chip"><span class="dot"></span><b>Version 1.9.6</b> available now · <b>2.0.0 Cataclasite</b> in final testing</div>
+    <h1>From logging to models in seconds.</h1>
+    <p class="lead">SGEO Studio is a desktop application for structural geology: log alpha, beta and gamma and see the true orientations on the net, in section, in 3D and on the downhole log as you type, then build the surfaces, faults and bodies from the same data, cut at the topography and related by age.</p>
     <div class="cta">
       <a class="btn btn-primary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/latest">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
@@ -276,8 +277,7 @@
     <p class="requirements">macOS on Apple silicon and Windows 11, 64-bit. Free trial of every feature, no account and no internet connection required.</p>
 
     <div class="shot">
-      <!-- Replace with docs/img/hero.png, a 2.0 screenshot about 2100 px wide -->
-      <img src="img/hero.png" alt="SGEO Studio 2.0 with the logging table, the stereonet, a section and the 3D view open side by side" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Screenshot of SGEO Studio 2.0</div>'">
+      <img src="img/hero.png" alt="SGEO Studio 2.0 with the 3D view, the Layers panel and the inspector: two drilling fences, a bedding surface, two faults and the topography" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Screenshot of SGEO Studio 2.0</div>'">
     </div>
   </div>
 </header>
@@ -286,7 +286,7 @@
   <div class="wrap">
     <div>
       <h3><span class="pill">Coming soon</span>SGEO Studio 2.0.0 Cataclasite</h3>
-      <p>A rewrite of the application from the ground up: a new project file, a far faster table, sections with drawings and DXF export, imported meshes with cuts and distances, value bars on the downhole log, and the same orientation maths validated against 1.x. Projects from 1.x open and convert. The current release, 1.9.6, is available above in the meantime.</p>
+      <p>A rewrite of the application from the ground up: a new project file, a far faster table, sections with drawings and DXF export, a 3D modelling toolset with surfaces, bodies, fault relations, offsets and a topography, meshes with cuts and distances, value bars on the downhole log, and the same orientation maths validated against 1.x. Projects from 1.x open and convert. The current release, 1.9.6, is available above in the meantime.</p>
     </div>
     <a class="btn btn-secondary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases">Release notes</a>
   </div>
@@ -295,7 +295,7 @@
 <div class="strip">
   <div class="wrap">
     <div class="item"><b>One project file</b>Collars, surveys, structures, datasets, sets and view state in a single .sgeo2 file, saved as you work.</div>
-    <div class="item"><b>Linked views</b>Table, stereonet, section, 3D and downhole log share one selection and one set of filters.</div>
+    <div class="item"><b>Linked views</b>Table, stereonet, section, 3D, downhole log and models share one selection and one set of filters.</div>
     <div class="item"><b>Built by geologists</b>Made by a structural geology consultancy for its own core logging and reviews.</div>
     <div class="item"><b>Works offline</b>Licence and trial are validated locally; nothing leaves your computer.</div>
   </div>
@@ -305,7 +305,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Features</span>
-      <h2>Everything a structural logging campaign needs, in one window.</h2>
+      <h2>Everything a structural campaign needs, from the core tray to the model.</h2>
       <p>What 1.9.6 does today, and what 2.0 adds: the items marked New arrive with the 2.0 release.</p>
     </div>
     <div class="grid">
@@ -324,15 +324,25 @@
         <h3>Sections <span class="tag">New in 2.0</span></h3>
         <p>Vertical, plan and inclined sections with a corridor either side of the plane, best-fit sections through selected holes, structures as ticks and arrows, and drawings that can be traced, styled and exported to DXF.</p>
       </div>
-      <div class="card new">
+            <div class="card new">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12 4 7.5M12 12l8-4.5M12 12v9"/></svg></div>
-        <h3>Meshes and distances <span class="tag">New in 2.0</span></h3>
-        <p>Import Leapfrog surfaces and solids as DXF, OBJ or STL, see them in 3D and cut on every section, trace a cut as a drawing, and compute the signed distance of each structure to a surface to assign hanging wall and footwall sets.</p>
+        <h3>Surfaces and bodies <span class="tag">New in 2.0</span></h3>
+        <p>Extrude or loft polylines drawn on sections and plans, fit planes and contacts through measurements, honour structures with a form surface, and close bodies from logged intervals. Every model keeps its recipe, so it rebuilds when its lines or its data change.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8l3 4h7"/><path d="M3 17h7l3-4"/><path d="M14 13h7"/></svg></div>
+        <h3>Faults and relations <span class="tag">New in 2.0</span></h3>
+        <p>An age matrix of the structure types says which surface ends against or offsets which, with exceptions for single pairs. A finite fault moves the surfaces around it with a three dimensional displacement field, and Remesh all makes the triangulations conformal along the contacts for export to numerical codes.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3-4 5-6 8-6s5 3 10 2"/><path d="M3 20h18"/><path d="M7 9V5M17 11V6"/></svg></div>
+        <h3>Topography and volume <span class="tag">New in 2.0</span></h3>
+        <p>Import a DEM or a triangulated surface as the ground, drape rasters and polylines on it, and let every model end at the topography and at the model volume, or switch either clip off. Imported meshes from Leapfrog and others are cut on every section and give signed distances to assign hanging wall and footwall sets.</p>
       </div>
       <div class="card">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div>
         <h3>3D view</h3>
-        <p>Desurveyed hole traces, plane discs with poles, lineation arrows, interval tubes, point markers and meshes in an OpenGL scene with a clipping slab, camera presets, and bars for numeric columns.</p>
+        <p>Desurveyed hole traces, plane discs with poles, lineation arrows, interval tubes, point markers, models, meshes and draped rasters in an OpenGL scene with a clean clipping slab, shaded relief on the topography, a hover card on every feature and maximum intensity projection of assays.</p>
       </div>
       <div class="card">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3v18M12 3v18M18 3v18"/><path d="M4 8h4M10 13h4M16 6h4M16 17h4"/></svg></div>
@@ -341,8 +351,8 @@
       </div>
       <div class="card">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
-        <h3>Datasets and user columns</h3>
-        <p>Add interval tables for lithology, alteration, RQD or assays and point tables beside the structures. User columns become filters, colour sources and set columns, and a sortable table of tens of thousands of rows stays responsive.</p>
+        <h3>Datasets, data sets and user columns</h3>
+        <p>Add interval tables for lithology, alteration, RQD or assays and point tables beside the structures, and gather structures, intervals and polylines into data sets that models are built from. User columns become filters, colour sources and set columns, and a table of tens of thousands of rows stays responsive, with an active hole for logging.</p>
       </div>
       <div class="card">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
@@ -352,7 +362,12 @@
       <div class="card">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="17" r="3"/></svg></div>
         <h3>Filters and sets</h3>
-        <p>Filter by hole, set, key observation or any column expression, and every view follows. Orientation sets live in the table as ordinary columns, so they export, filter and colour like any other value.</p>
+        <p>Filter by hole, set, key observation or any column expression, and every view follows; tick structure types on and off per view from the Structures card. Orientation sets live in the table as ordinary columns, so they export, filter and colour like any other value.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M5 8h6M5 14h10M5 20h14"/><circle cx="13" cy="8" r="1.5"/><circle cx="17" cy="14" r="1.5"/></svg></div>
+        <h3>Chronology and reports <span class="tag">New in 2.0</span></h3>
+        <p>Log overprinting relations between structures, see them compiled into a succession with its diagram, let the chronology propose the age matrix of the model, and write the model report and the audit of every surface with its data, its relations and its warnings.</p>
       </div>
     </div>
   </div>
@@ -362,7 +377,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Workflow</span>
-      <h2>Import the survey, log the core, read the answer.</h2>
+      <h2>Import the survey, log the core, read the answer, build the model.</h2>
     </div>
     <div class="steps">
       <div class="step">
@@ -377,6 +392,10 @@
         <h3>Interpret and deliver</h3>
         <p>Draw sets on the net, compare them across holes and against modelled surfaces, and export the tables, the figures and the sections in the formats the rest of the project uses.</p>
       </div>
+      <div class="step">
+        <h3>Model</h3>
+        <p>Trace the contacts and faults on the sections, extrude or loft them into surfaces, set the age order so the faults cut and offset what is older, cut everything at the topography, and remesh the set with conformal seams for the geotechnical or resource model that follows.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -389,9 +408,9 @@
       <p>Selecting a measurement in one view highlights it in every other, and the filters, sets and colours are shared.</p>
     </div>
     <div class="gallery">
-      <figure><img src="img/stereonet.png" alt="Stereonet with density contours and orientation sets" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Stereonet</div>'"><figcaption>Stereonet with density contouring, orientation sets and statistics.</figcaption></figure>
-      <figure><img src="img/section.png" alt="Section with hole traces, structures and a mesh cut" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Section</div>'"><figcaption>Section through selected holes with structures, intervals and a modelled surface.</figcaption></figure>
-      <figure><img src="img/threed.png" alt="3D view with hole traces, plane discs and a mesh" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>3D view</div>'"><figcaption>3D scene with plane discs, interval tubes and an imported solid.</figcaption></figure>
+      <figure><img src="img/stereonet.png" alt="Stereonet with density contours and orientation sets" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Stereonet</div>'"><figcaption>Stereonet with density contouring per set, slickenlines as arrows, orientation sets and their statistics.</figcaption></figure>
+      <figure><img src="img/section.png" alt="Section with hole traces, structures and a mesh cut" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Section</div>'"><figcaption>Section through a fence of holes with lithology strips, structures as ticks, the ground line and the cuts of the modelled surfaces.</figcaption></figure>
+      <figure><img src="img/threed.png" alt="3D view with hole traces, plane discs and a mesh" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>3D view</div>'"><figcaption>3D scene with plane discs, lithology tubes, two faults and a bedding surface offset across one of them.</figcaption></figure>
       <figure><img src="img/downhole.png" alt="Downhole log of several holes side by side" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Downhole log</div>'"><figcaption>Downhole logs of several holes with lithology, assay bars and orientation tracks.</figcaption></figure>
     </div>
   </div>
@@ -477,8 +496,8 @@
         <h3>Logging licence</h3>
         <p class="price">Per user, valid on up to two computers</p>
         <ul>
-          <li>Every logging, section, 3D and downhole feature</li>
-          <li>Meshes, distances and side assignment</li>
+          <li>Every logging, section, 3D, downhole and modelling feature</li>
+          <li>Surfaces, bodies, fault relations, topography and remeshing</li>
           <li>Import and export of every table and figure</li>
           <li>Licence file installed offline, no account</li>
         </ul>
