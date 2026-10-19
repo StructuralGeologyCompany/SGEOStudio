@@ -16,10 +16,12 @@
 
 ---
 
-**SGEO Studio 1.9.6** is the current release, and **2.0.0 Cataclasite**, a rewrite of the application with sections, a 3D modelling toolset, meshes and a much faster table, is in final testing. Every installation includes a free trial of all features (seven days in 1.9.6, fourteen in 2.0), with no account and no internet connection required; the standalone stereonet stays free without limit, and after the trial a logging project opens read-only until a licence is installed.
+**SGEO Studio 2.1.0 Cataclasite** is the current release. Version 2 is a rewrite of the application with a new project file, a much faster table, sections with drawings and DXF export, a modelling toolset with surfaces, bodies, fault relations, offsets and topography, imported meshes, and the same orientation calculations as 1.x, checked against it. Projects from 1.x open and are converted. The previous release, 1.9.6, stays on the Releases page for those who need it.
 
-The application runs on macOS (Apple silicon) and Windows 11 64-bit. Download the installer for your platform from the [Releases](https://github.com/StructuralGeologyCompany/SGEOStudio/releases) page. On macOS, right-click the app and choose Open the first time, since the build is not notarised.
+Every installation includes a fourteen day trial of every feature, with no account and no internet connection required. The standalone stereonet stays free without limit. When the trial or a licence ends, a drillhole project opens read only for thirty days, so every view and export keeps working, and after that a licence is needed to open it. A licence is a yearly subscription that covers every update released while it runs.
 
-Features, screenshots and licensing are described on the [product page](https://structuralgeologycompany.github.io/SGEOStudio/). For licences, pricing and upgrades from 1.x write to [sales@sgeo.fi](mailto:sales@sgeo.fi); for problems with the application, [studio@sgeo.fi](mailto:studio@sgeo.fi).
+The application runs on macOS (Apple silicon) and Windows 11, 64-bit. Download the installer for your platform from the [Releases](https://github.com/StructuralGeologyCompany/SGEOStudio/releases) page. On macOS, right-click the app and choose Open the first time, since the build is not notarised.
 
-This repository holds the releases and the product page only; the application source is not published here.
+Features, screenshots and licensing are described on the [product page](https://structuralgeologycompany.github.io/SGEOStudio/). For licences, prices, renewals and upgrades from 1.x write to [sales@sgeo.fi](mailto:sales@sgeo.fi), and for problems with the application to [studio@sgeo.fi](mailto:studio@sgeo.fi).
+
+This repository holds the releases and the product page only. The application source is not published here.
