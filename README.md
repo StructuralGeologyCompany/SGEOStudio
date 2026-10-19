@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://structuralgeologycompany.github.io/SGEOStudio/"><b>Product page</b></a> ·
-  <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/latest"><b>Download the latest release</b></a> ·
+  <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.0"><b>Download 2.1.0</b></a> ·
   <a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a>
 </p>
 
