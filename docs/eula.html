@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Licence Agreement · SGEO Studio</title>
+<meta name="description" content="The end user licence agreement of SGEO Studio, shown at first start and kept under Help in the application.">
+<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #F5F5F7;
+    --surface: #FFFFFF;
+    --surface-alt: #EDEEF0;
+    --line: #DDDFE3;
+    --line-strong: #B8BDC4;
+    --text: #2A2E33;
+    --muted: #6E747C;
+    --faint: #A0A5AC;
+    --accent: #3D6E8F;
+    --accent-hover: #34607D;
+    --accent-soft: #DDE6EE;
+    --on-accent: #FFFFFF;
+    --ok: #2F6B3F;
+    --ok-soft: #E3EFE6;
+    --warm: #A8641A;
+    --warm-soft: #FCEFD8;
+    --shadow: 0 1px 2px rgba(20, 24, 30, .06), 0 12px 32px rgba(20, 24, 30, .08);
+    --radius: 14px;
+    --max: 1120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17191C;
+      --surface: #202327;
+      --surface-alt: #2A2E33;
+      --line: #33383E;
+      --line-strong: #4A5058;
+      --text: #E8EAED;
+      --muted: #A0A5AC;
+      --faint: #6E747C;
+      --accent: #7FA8C4;
+      --accent-hover: #98BCD4;
+      --accent-soft: #2B3D4A;
+      --on-accent: #14202A;
+      --ok: #8CC49A;
+      --ok-soft: #22352A;
+      --warm: #E0A25C;
+      --warm-soft: #3A2C1B;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17191C; --surface: #202327; --surface-alt: #2A2E33; --line: #33383E; --line-strong: #4A5058;
+    --text: #E8EAED; --muted: #A0A5AC; --faint: #6E747C; --accent: #7FA8C4; --accent-hover: #98BCD4;
+    --accent-soft: #2B3D4A; --on-accent: #14202A; --ok: #8CC49A; --ok-soft: #22352A; --warm: #E0A25C; --warm-soft: #3A2C1B;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+  h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -0.015em; font-weight: 600; }
+  h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.1rem; }
+  p { margin: 0; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .muted { color: var(--muted); }
+  .eyebrow {
+    display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; }
+  .brand img { height: 30px; width: auto; }
+  .brand:hover { text-decoration: none; }
+  nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-size: .95rem; }
+  nav ul a { color: var(--muted); }
+  nav ul a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 720px) { nav ul { display: none; } }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: .98rem;
+    border: 1px solid transparent; transition: background .15s, border-color .15s, transform .15s;
+    white-space: nowrap;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); }
+  .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--line-strong); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
+  .btn small { font-weight: 400; color: inherit; opacity: .75; font-size: .8em; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--line); padding: 40px 0 48px; font-size: .9rem; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--text); }
+
+  /* The agreement: one narrow column of text */
+  .agreement { padding: 64px 0 84px; }
+  .agreement .column { max-width: 680px; margin: 0 auto; }
+  .agreement h1 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); margin-bottom: 10px; }
+  .agreement .version { color: var(--muted); font-size: .95rem; margin-bottom: 30px; }
+  .agreement h2 { font-size: 1.2rem; margin: 38px 0 12px; }
+  .agreement p + p { margin-top: 14px; }
+  .agreement .back { margin-top: 48px; font-size: .95rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="SGEO Studio"><img src="img/logo.png" alt="SGEO Studio"></a>
+    <ul>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#stereonet">Free stereonet</a></li>
+      <li><a href="index.html#licensing">Licensing</a></li>
+      <li><a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases">Releases</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="agreement">
+  <div class="wrap">
+    <article class="column">
+      <span class="eyebrow">Licence agreement</span>
+      <h1>SGEO Studio End User Licence Agreement</h1>
+      <p class="version">Version 1, 20 October 2026.</p>
+      <p>This agreement is between Structural Geology Company Oy, business identity code 3377630-7, Turku, Finland ("SGEO"), and the person or organisation that downloads, installs or uses SGEO Studio ("you"). By downloading, installing or using the software you accept this agreement. If you do not accept it, do not download, install or use the software.</p>
+      <h2>1. The software</h2>
+      <p>SGEO Studio is a desktop application for the logging, analysis and three dimensional modelling of structural geological data. "The software" means the application, its documentation, its updates and any licence file issued for it.</p>
+      <h2>2. Licence</h2>
+      <p>SGEO grants you a non exclusive, non transferable licence to install and use the software on one computer at a time for your own professional or academic work, for the period covered by a valid subscription or trial. The standalone stereonet may be used without charge and without limit of time. Every installation includes a trial of the full application for fourteen days. When a trial or subscription ends, a drillhole project opens read only for thirty days so that it can be viewed and exported, after which a subscription is needed to open it. A subscription is bound to one computer, and moving it to another is done through SGEO.</p>
+      <p>You may not copy the software except for backup, sell, rent, lend or sublicense it, remove or alter its licence protection, decompile, disassemble or reverse engineer it except where the law allows this regardless of this agreement, or use it to build a competing product.</p>
+      <h2>3. Ownership</h2>
+      <p>The software is licensed, not sold. SGEO and its licensors keep every right in it that this agreement does not grant you. Your project files and the data you put into the software are yours.</p>
+      <h2>4. Your data</h2>
+      <p>The software works on your own computer. It keeps your projects where you save them and does not send your data to SGEO. The licence check reads the date from a public SGEO web address and the update check reads the list of releases from the public repository, neither of which carries your data. SGEO's handling of personal data given when a licence is bought is described in its privacy notice.</p>
+      <h2>5. Updates</h2>
+      <p>A subscription covers every update released while it runs. SGEO may change, add or remove features in an update and is under no duty to provide any particular update or to keep supporting any particular version or operating system.</p>
+      <h2>6. No warranty</h2>
+      <p>The software is provided as it is and as available, without warranty of any kind. To the fullest extent the law allows, SGEO disclaims every warranty, express or implied, including those of merchantability, fitness for a particular purpose, accuracy and non infringement. SGEO does not warrant that the software is free of errors, that it will run without interruption, or that its results are correct or suitable for any purpose.</p>
+      <p>The software is a tool for a professional user. Every orientation, section, model, statistic and other result it produces depends on the data you put in, on the settings you choose and on the methods described in its documentation, and must be checked by a qualified person before it is relied on. You are responsible for every decision made and every document produced with the software.</p>
+      <h2>7. Limitation of liability</h2>
+      <p>To the fullest extent the law allows, SGEO and its owners, employees and partners are not liable for any indirect, incidental, special, consequential or punitive loss or damage, nor for loss of profit, revenue, data, projects, business or goodwill, nor for the cost of substitute goods or services, arising out of or in connection with the software or this agreement, however caused and under whatever theory of liability, even if SGEO has been told that such loss was possible. In every case SGEO's total liability under this agreement is limited to the amount you paid for the subscription in the twelve months before the event that gave rise to the claim, or to one hundred euros where nothing was paid.</p>
+      <p>Nothing in this agreement limits a liability that cannot be limited under the law that applies, such as liability for damage caused intentionally or by gross negligence, or a consumer's rights under mandatory law.</p>
+      <h2>8. Termination</h2>
+      <p>This agreement runs until it ends. It ends when your subscription or trial ends without renewal, when you uninstall the software, or at once if you break this agreement. Sections 3, 6, 7 and 9 survive its end.</p>
+      <h2>9. Governing law and disputes</h2>
+      <p>This agreement is governed by the law of Finland, without regard to its conflict of law rules and excluding the United Nations Convention on Contracts for the International Sale of Goods. Disputes that cannot be settled by negotiation are decided by the District Court of Southwest Finland in Turku as the court of first instance, unless mandatory law gives a consumer the right to another forum.</p>
+      <h2>10. Whole agreement and changes</h2>
+      <p>This agreement is the whole agreement between you and SGEO about the software and replaces any earlier understanding. SGEO may publish a revised agreement with a new version of the software, and your use of that version is acceptance of the revised agreement. If a part of this agreement is found unenforceable, the rest stays in force.</p>
+      <h2>11. Contact</h2>
+      <p>Structural Geology Company Oy, Turku, Finland. Licences and sales: <a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a>. The application: <a href="mailto:studio@sgeo.fi">studio@sgeo.fi</a>.</p>
+      <p class="back"><a href="index.html#licensing">Back to licensing</a></p>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="year">2026</span> Structural Geology Company Oy · Turku, Finland</div>
+    <div>
+      <a href="https://sgeo.fi">sgeo.fi</a> &nbsp;·&nbsp;
+      <a href="index.html">SGEO Studio</a> &nbsp;·&nbsp;
+      <a href="mailto:sales@sgeo.fi">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
