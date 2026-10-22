@@ -10,13 +10,13 @@
 
 <p align="center">
   <a href="https://structuralgeologycompany.github.io/SGEOStudio/"><b>Product page</b></a> ·
-  <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.2"><b>Download 2.1.2</b></a> ·
+  <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.3"><b>Download 2.1.3</b></a> ·
   <a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a>
 </p>
 
 ---
 
-**SGEO Studio 2.1.2 Cataclasite** is the current release. Version 2 is a rewrite of the application with a new project file, a much faster table, sections with drawings and DXF export, a modelling toolset with surfaces, bodies, fault relations, offsets and topography, and imported meshes. Projects from earlier versions open and are converted, and their licences work unchanged.
+**SGEO Studio 2.1.3 Cataclasite** is the current release. Version 2 is a rewrite of the application with a new project file, a much faster table, sections with drawings and DXF export, a modelling toolset with surfaces, bodies, fault relations, offsets and topography, and imported meshes. Projects from earlier versions open and are converted, and their licences work unchanged.
 
 Every installation includes a fourteen day trial of every feature, with no account and no internet connection required. The standalone stereonet stays free without limit. When the trial or a licence ends, a drillhole project opens read only for thirty days, so every view and export keeps working, and after that a licence is needed to open it. A licence is a yearly subscription that covers every update released while it runs.
 
