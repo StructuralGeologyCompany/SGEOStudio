@@ -1,308 +1,479 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SGEO Studio · structural logging, stereonets and 3D modelling</title>
-<meta name="description" content="SGEO Studio is a desktop application for structural geologists: drillcore logging, stereonets, sections, downhole logs and 3D modelling. Free stereonet and a 14-day trial for macOS and Windows.">
-<meta property="og:title" content="SGEO Studio 2.1.7">
-<meta property="og:description" content="From the core tray to the model. Structural logging, stereonets, sections and 3D modelling for macOS and Windows.">
+<title>SGEO Studio · structural logging, stereonet analysis and 3D modelling</title>
+<meta name="description" content="SGEO Studio is a desktop application for structural drillcore logging, stereonet analysis, sections, downhole logs and 3D structural modelling with faults, offsets and topography. Free trial for macOS and Windows.">
+<meta property="og:title" content="SGEO Studio">
+<meta property="og:description" content="From logging to models in seconds. Structural logging, stereonet analysis and 3D modelling for macOS and Windows.">
 <meta property="og:image" content="img/hero.png">
-<meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FFFFFF;
-    --bg-alt: #F6F6F4;
-    --line: #E4E4E1;
-    --text: #1C1D1F;
-    --muted: #63666B;
-    --faint: #8E9196;
+    --bg: #F5F5F7;
+    --surface: #FFFFFF;
+    --surface-alt: #EDEEF0;
+    --line: #DDDFE3;
+    --line-strong: #B8BDC4;
+    --text: #2A2E33;
+    --muted: #6E747C;
+    --faint: #A0A5AC;
     --accent: #3D6E8F;
-    --accent-hover: #335E7B;
+    --accent-hover: #34607D;
+    --accent-soft: #DDE6EE;
+    --on-accent: #FFFFFF;
+    --ok: #2F6B3F;
+    --ok-soft: #E3EFE6;
+    --warm: #A8641A;
+    --warm-soft: #FCEFD8;
+    --shadow: 0 1px 2px rgba(20, 24, 30, .06), 0 12px 32px rgba(20, 24, 30, .08);
     --radius: 14px;
-    --max: 1100px;
-    --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 112px;
+    --max: 1120px;
   }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17191C;
+      --surface: #202327;
+      --surface-alt: #2A2E33;
+      --line: #33383E;
+      --line-strong: #4A5058;
+      --text: #E8EAED;
+      --muted: #A0A5AC;
+      --faint: #6E747C;
+      --accent: #7FA8C4;
+      --accent-hover: #98BCD4;
+      --accent-soft: #2B3D4A;
+      --on-accent: #14202A;
+      --ok: #8CC49A;
+      --ok-soft: #22352A;
+      --warm: #E0A25C;
+      --warm-soft: #3A2C1B;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17191C; --surface: #202327; --surface-alt: #2A2E33; --line: #33383E; --line-strong: #4A5058;
+    --text: #E8EAED; --muted: #A0A5AC; --faint: #6E747C; --accent: #7FA8C4; --accent-hover: #98BCD4;
+    --accent-soft: #2B3D4A; --on-accent: #14202A; --ok: #8CC49A; --ok-soft: #22352A; --warm: #E0A25C; --warm-soft: #3A2C1B;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 12px 32px rgba(0, 0, 0, .35);
+  }
+
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 17px;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "cv11", "ss01";
   }
-  img { max-width: 100%; height: auto; }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  h1, h2, h3 { margin: 0; font-weight: 600; color: var(--text); }
-  h1 { font-size: clamp(2.4rem, 6vw, 4.1rem); line-height: 1.04; letter-spacing: -0.035em; }
-  h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.1; letter-spacing: -0.028em; }
-  h3 { font-size: 1.05rem; line-height: 1.3; letter-spacing: -0.01em; }
+  a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+  h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -0.015em; font-weight: 600; }
+  h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); letter-spacing: -0.03em; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  h3 { font-size: 1.1rem; }
   p { margin: 0; }
-  h1, h2 { text-wrap: balance; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--s3); }
-  @media (max-width: 600px) { .wrap { padding: 0 16px; } }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  .muted { color: var(--muted); }
+  .eyebrow {
+    display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
 
   /* Navigation */
-  nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); }
-  @supports (backdrop-filter: blur(1px)) { nav { background: rgba(255,255,255,.8); backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px); } }
-  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; align-items: center; }
-  .brand img { height: 24px; width: auto; display: block; }
-  nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: .9rem; }
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; }
+  .brand img { height: 30px; width: auto; }
+  .brand:hover { text-decoration: none; }
+  nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; font-size: .95rem; }
   nav ul a { color: var(--muted); }
   nav ul a:hover { color: var(--text); text-decoration: none; }
-  @media (max-width: 760px) { nav ul { display: none; } }
+  @media (max-width: 720px) { nav ul { display: none; } }
 
   /* Buttons */
   .btn {
-    display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center;
-    min-width: 220px; padding: 12px 22px; border-radius: 10px; border: 1px solid transparent;
-    font-weight: 600; font-size: .98rem; line-height: 1.25; transition: background-color .15s, border-color .15s;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: .98rem;
+    border: 1px solid transparent; transition: background .15s, border-color .15s, transform .15s;
+    white-space: nowrap;
   }
-  .btn small { font-weight: 400; font-size: .8rem; opacity: .78; }
-  .btn:hover { text-decoration: none; }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary { background: var(--bg); color: var(--text); border-color: #CFD0CC; }
-  .btn-secondary:hover { border-color: var(--text); }
-  .btn-plain { min-width: 0; display: inline-flex; flex-direction: row; }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); }
+  .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--line-strong); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--text); }
+  .btn small { font-weight: 400; color: inherit; opacity: .75; font-size: .8em; }
 
   /* Hero */
-  .hero { padding: 104px 0 0; text-align: center; }
-  .hero h1 { max-width: 900px; margin: 0 auto; }
-  .hero .sub { max-width: 600px; margin: var(--s3) auto 0; font-size: 1.2rem; color: var(--muted); }
-  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: var(--s4); }
-  .version { margin-top: var(--s3); font-size: .86rem; color: var(--faint); }
-  .version a { color: var(--muted); }
-  .install { margin-top: 6px; font-size: .8rem; color: var(--faint); max-width: 640px; margin-left: auto; margin-right: auto; }
+  .hero { padding: 84px 0 40px; text-align: center; }
+  .hero .logo-lockup { display: flex; justify-content: center; margin-bottom: 34px; }
+  .hero .logo-lockup img { height: 56px; width: auto; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logo-lockup img, :root:not([data-theme="light"]) .brand img { filter: invert(1) hue-rotate(180deg); } }
+  :root[data-theme="dark"] .logo-lockup img, :root[data-theme="dark"] .brand img { filter: invert(1) hue-rotate(180deg); }
+  .release-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line); font-size: .86rem; color: var(--muted); margin-bottom: 26px;
+  }
+  .release-chip b { color: var(--text); font-weight: 600; }
+  .release-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-left: 4px; }
+  .hero h1 { max-width: 820px; margin: 0 auto 20px; }
+  .hero .lead { max-width: 680px; margin: 0 auto 36px; font-size: 1.18rem; color: var(--muted); }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .requirements { margin-top: 18px; font-size: .9rem; color: var(--muted); }
   .shot {
-    margin: var(--s5) auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--line);
-    box-shadow: 0 1px 2px rgba(20,22,26,.04), 0 24px 60px -12px rgba(20,22,26,.18);
+    margin: 56px auto 0; max-width: 1060px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
   }
   .shot img { display: block; width: 100%; height: auto; }
+  .shot .placeholder {
+    aspect-ratio: 16 / 9.4; display: grid; place-items: center; color: var(--faint); font-size: .95rem;
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px, var(--surface-alt);
+  }
 
   /* Sections */
-  section { padding: var(--s6) 0; }
-  .alt { background: var(--bg-alt); }
-  .head { max-width: 620px; margin-bottom: var(--s5); }
-  .head p { margin-top: var(--s2); color: var(--muted); font-size: 1.1rem; }
-  .eyebrow { display: block; font-size: .8rem; font-weight: 600; color: var(--accent); margin-bottom: 12px; }
-  @media (max-width: 600px) { section { padding: 72px 0; } .hero { padding-top: 64px; } .head { margin-bottom: var(--s4); } }
+  section { padding: 84px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .section-head { max-width: 640px; margin-bottom: 44px; }
+  .section-head p { margin-top: 14px; color: var(--muted); font-size: 1.05rem; }
 
-  /* What's new */
-  .new { padding: var(--s5) 0; border-bottom: 1px solid var(--line); margin-top: var(--s6); background: var(--bg-alt); border-top: 1px solid var(--line); }
-  .new-top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s2); margin-bottom: var(--s4); flex-wrap: wrap; }
-  .new-top h2 { font-size: 1.35rem; letter-spacing: -0.015em; }
-  .new-top a { font-size: .92rem; }
-  .row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s4); }
-  .row4 h3 { margin-bottom: 6px; }
-  .row4 p { color: var(--muted); font-size: .94rem; }
-  @media (max-width: 900px) { .row4 { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .row4 { grid-template-columns: 1fr; gap: var(--s3); } }
+  /* Coming-soon banner */
+  .banner { background: var(--accent-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .banner .wrap { display: flex; gap: 16px 28px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding-top: 22px; padding-bottom: 22px; }
+  .banner h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .banner p { color: var(--muted); font-size: .95rem; max-width: 760px; }
+  .banner .pill { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--on-accent); background: var(--accent); padding: 4px 9px; border-radius: 6px; margin-right: 10px; vertical-align: middle; }
 
-  /* Features */
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-  .feat { padding: var(--s4) var(--s4) var(--s4) 0; border-bottom: 1px solid var(--line); }
-  .feat h3 { font-size: 1.15rem; margin-bottom: 10px; }
-  .feat p { color: var(--muted); font-size: .97rem; }
-  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } .feat { padding: var(--s3) 0; } }
+  /* Highlights strip */
+  .strip { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px 0; }
+  .strip .wrap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .strip .item { font-size: .95rem; color: var(--muted); }
+  .strip .item b { display: block; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+  @media (max-width: 860px) { .strip .wrap { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Feature grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 24px 28px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .card .glyph {
+    width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent); margin-bottom: 4px;
+  }
+  .card .glyph svg { width: 22px; height: 22px; }
+  .card p { color: var(--muted); font-size: .97rem; }
+  .card.new { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .tag {
+    display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--warm); background: var(--warm-soft); padding: 3px 8px; border-radius: 6px; margin-left: 8px; vertical-align: middle;
+  }
+
+  /* Workflow */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
+  @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+  .step { position: relative; padding: 26px 24px 28px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  .step::before {
+    counter-increment: step; content: counter(step, decimal-leading-zero);
+    display: block; font-size: .8rem; font-weight: 600; letter-spacing: .1em; color: var(--accent); margin-bottom: 12px;
+  }
+  .step h3 { margin-bottom: 10px; }
+  .step p { color: var(--muted); font-size: .97rem; }
 
   /* Gallery */
-  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s5) var(--s4); }
-  .gallery figure { margin: 0; }
-  .gallery .frame { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); aspect-ratio: 3 / 2; transition: box-shadow .2s; }
-  .gallery figure:hover .frame { box-shadow: 0 16px 40px -16px rgba(20,22,26,.22); }
-  .gallery img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+  .gallery figure { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .gallery img { display: block; width: 100%; height: auto; }
+  .gallery figcaption { padding: 12px 16px; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); }
   .gallery figure.wide { grid-column: 1 / -1; }
-  .gallery figure.wide .frame { aspect-ratio: 2000 / 1286; }
-  .gallery figcaption { margin-top: 14px; font-size: .92rem; color: var(--muted); }
-  .gallery figcaption b { color: var(--text); font-weight: 600; }
-  @media (max-width: 700px) { .gallery { grid-template-columns: 1fr; gap: var(--s4); } }
+  .gallery .placeholder { aspect-ratio: 16/10; display: grid; place-items: center; color: var(--faint); font-size: .9rem; background: var(--surface-alt); }
 
-  /* Free stereonet */
-  .free { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); align-items: center; }
-  .free p { margin-top: var(--s3); color: var(--muted); font-size: 1.1rem; max-width: 460px; }
-  .free img { width: 100%; height: auto; max-width: 420px; display: block; margin: 0 auto; }
-  @media (max-width: 800px) { .free { grid-template-columns: 1fr; gap: var(--s4); } .free img { max-width: 320px; } }
+  /* Free stereonet callout */
+  .callout {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 40px;
+  }
+  @media (max-width: 860px) { .callout { grid-template-columns: 1fr; padding: 28px; } }
+  .callout h2 { margin-bottom: 14px; }
+  .callout p { color: var(--muted); }
+  .net { width: 100%; max-width: 340px; margin: 0 auto; display: block; }
 
   /* Licensing */
-  .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s3); }
-  .plan { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s4); display: flex; flex-direction: column; }
-  .plan.main { border-color: var(--accent); }
-  .plan .name { font-size: .95rem; font-weight: 600; color: var(--muted); }
-  .plan .price { font-size: 2rem; font-weight: 600; letter-spacing: -0.03em; margin-top: 6px; line-height: 1.15; }
-  .plan .terms { color: var(--muted); font-size: .95rem; margin-top: 4px; }
-  .plan ul { list-style: none; margin: var(--s3) 0 0; padding: 0; font-size: .97rem; }
-  .plan li { padding: 11px 0; border-top: 1px solid var(--line); }
-  .plan .btn { margin-top: var(--s3); align-self: flex-start; }
-  .plan .spacer { flex: 1; }
-  @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } .plan { padding: 28px 24px; } }
-  .contacts { display: flex; gap: var(--s2) var(--s5); flex-wrap: wrap; margin-top: var(--s4); font-size: .95rem; color: var(--muted); }
-  .contacts b { display: block; color: var(--text); font-weight: 500; }
-  .legal { margin-top: var(--s3); font-size: .85rem; color: var(--faint); }
-  .legal a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+  .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 28px; }
+  .plan.featured { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .plan h3 { font-size: 1.25rem; margin-bottom: 6px; }
+  .plan .price { font-size: 1.05rem; color: var(--muted); margin-bottom: 18px; }
+  .plan ul { margin: 0 0 22px; padding: 0; list-style: none; display: grid; gap: 9px; color: var(--muted); font-size: .97rem; }
+  .plan li { padding-left: 26px; position: relative; }
+  .plan li::before {
+    content: ""; position: absolute; left: 0; top: .42em; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--ok-soft);
+  }
+  .plan li::after {
+    content: ""; position: absolute; left: 4px; top: calc(.42em + 3px); width: 6px; height: 3px;
+    border-left: 2px solid var(--ok); border-bottom: 2px solid var(--ok); transform: rotate(-45deg);
+  }
+  .fineprint { margin-top: 22px; font-size: .9rem; color: var(--muted); max-width: 760px; }
 
   /* Footer */
-  footer { border-top: 1px solid var(--line); padding: var(--s4) 0 48px; font-size: .86rem; color: var(--faint); }
-  footer .wrap { display: flex; justify-content: space-between; gap: var(--s2) var(--s3); flex-wrap: wrap; }
-  footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
+  footer { border-top: 1px solid var(--line); padding: 40px 0 48px; font-size: .9rem; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
   footer a { color: var(--muted); }
   footer a:hover { color: var(--text); }
 </style>
 </head>
 <body>
 
-<nav aria-label="Main">
+<nav>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="img/logo.png" alt="SGEO Studio" width="120" height="22"></a>
+    <a class="brand" href="#top" aria-label="SGEO Studio"><img src="img/logo.png" alt="SGEO Studio"></a>
     <ul>
-      <li><a href="#new">What's new</a></li>
       <li><a href="#features">Features</a></li>
-      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#workflow">Workflow</a></li>
       <li><a href="#stereonet">Free stereonet</a></li>
       <li><a href="#licensing">Licensing</a></li>
+      <li><a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases">Releases</a></li>
     </ul>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>From the core tray<br>to the model.</h1>
-    <p class="sub">Structural logging, stereonets, sections, downhole logs and 3D modelling in one desktop application.</p>
+    <div class="release-chip"><span class="dot"></span><b>Version 2.1.7 Cataclasite</b> · released 30 October 2026</div>
+    <h1>From logging to models in seconds.</h1>
+    <p class="lead">SGEO Studio is a desktop application for structural geology. Alpha, beta and gamma logged from oriented core become true orientations as they are typed and appear at once on the stereonet, in section, in 3D and on the downhole log, and the same measurements and contacts then build the surfaces, faults and bodies, ended at the topography and ordered by age.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/download/v2.1.7/SGEO_Studio_2.1.7.dmg">Download for macOS<small>Apple silicon</small></a>
-      <a class="btn btn-secondary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/download/v2.1.7/SGEO_Studio_2.1.7.exe">Download for Windows<small>Windows 11, 64-bit</small></a>
+      <a class="btn btn-primary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/download/v2.1.7/SGEO_Studio_2.1.7.dmg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download for macOS <small>Apple silicon</small>
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/download/v2.1.7/SGEO_Studio_2.1.7.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download for Windows <small>64-bit</small>
+      </a>
     </div>
-    <p class="version">Version 2.1.7 · 30 October 2026 · <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.7">Release notes</a></p>
-    <p class="install">First launch on macOS: right-click the app and choose Open. On Windows, if SmartScreen appears, choose More info and then Run anyway.</p>
+    <p class="requirements">macOS on Apple silicon and Windows 11, 64-bit. Every feature can be tried for fourteen days without an account or an internet connection.</p>
+
     <div class="shot">
-      <img src="img/hero.png" alt="SGEO Studio with the 3D view, the Layers panel and the inspector: two drilling fences, a bedding surface, two faults and the topography" width="2184" height="1235">
+      <img src="img/hero.png" alt="SGEO Studio 2.1 with the 3D view, the Layers panel and the inspector: two drilling fences, a bedding surface, two faults and the topography" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Screenshot of SGEO Studio 2.1</div>'">
     </div>
   </div>
 </header>
 
-<div class="new" id="new">
+<div class="banner" id="coming">
   <div class="wrap">
-    <div class="new-top">
-      <h2>What's new in 2.1.7</h2>
-      <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.7">All release notes</a>
+    <div>
+      <h3><span class="pill">New</span>SGEO Studio 2.1.7 Cataclasite</h3>
+      <p>Version 2 is a rewrite of the application: a new project file, a much faster table, sections with drawings and DXF export, a modelling toolset with surfaces, bodies, fault relations, offsets and topography, imported meshes with cuts and distances, and value bars on the downhole log. Projects from earlier versions open and are converted, and their licences work unchanged. Version 2.1 adds a clip plane in the 3D view, an audit of every model against the holes, reloading of changed data files and a revised user guide. Version 2.1.1 makes surfaces that meet share their triangles along the contact, so a model exports without gaps or overlaps, turns Remesh all into a finishing pass over the whole model, lets a surface be left out of the model with one tick, and makes offsets rigid unless drag and taper are asked for. Version 2.1.2 fixes the small floating panes left behind when the window was closed, 2.1.3 fixes the too wide inspector panels of the Windows build, speeds up colouring by a column with thousands of values, adds opacity to the 3D view and gives the Sets and Sections panels the tree's rule of tick, eye and click, and 2.1.4 adds a rose diagram of polyline trends to the stereonet, floating Select, Draw and Section buttons in place of the tool bar, drillhole traces that can be pointed at, clicked and highlighted in 3D and on sections, polylines that follow the filters and can be joined, and fixes to the table, the camera and the downhole log. Version 2.1.5 lists every model's components by kind and says which were used, lets a model be built from and audited against every kind of data with a report written as HTML, Excel or CSV, brings the maximum intensity projection to the sections and onto each dataset's card in 3D, cuts form surfaces rectangular, keeps the block a relation names when a surface ends against a solid, and fixes the Windows computers on which the interface lost its styling. Version 2.1.6 opens a project with a large imported solid in seconds rather than minutes and records a freeze of the interface in its log. Version 2.1.7 speeds up large projects and their rasters, lays exported sections out in points on the page, adds a grid with coordinates to the 3D view and the model volume, and imports Surpac string files.</p>
     </div>
-    <div class="row4">
-      <div><h3>Faster on large projects</h3><p>Renaming, colour changes and rasters now take seconds.</p></div>
-      <div><h3>Figures laid out for print</h3><p>Exported sections are set in points, the same from any screen.</p></div>
-      <div><h3>A 3D grid with coordinates</h3><p>In the 3D view and on the model volume.</p></div>
-      <div><h3>Surpac strings</h3><p>Surpac string files now import directly.</p></div>
-    </div>
+    <a class="btn btn-secondary" href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.7">Release notes</a>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="item"><b>One project file</b>Collars, surveys, structures, datasets, sets and the state of every view are kept in a single .sgeo2 file, saved as you work.</div>
+    <div class="item"><b>Linked views</b>The table, the stereonet, the sections, the 3D view, the downhole log and the models share one selection and one set of filters.</div>
+    <div class="item"><b>Built by geologists</b>Written by a structural geology consultancy for its own core logging, data reviews and modelling.</div>
+    <div class="item"><b>Works offline</b>The licence and the trial are checked on your own computer, and no project data ever leave it.</div>
   </div>
 </div>
 
 <section id="features">
   <div class="wrap">
-    <div class="head">
+    <div class="section-head">
       <span class="eyebrow">Features</span>
-      <h2>One project, every view linked.</h2>
-      <p>A measurement selected in one view is selected in all of them, with the same filters, sets and colours.</p>
+      <h2>Everything a structural campaign needs, from the core tray to the model.</h2>
     </div>
     <div class="grid">
-      <div class="feat"><h3>Logging and the table</h3><p>Alpha, beta and gamma become true orientations as you type. The table stays quick at tens of thousands of rows.</p></div>
-      <div class="feat"><h3>Stereonet and statistics</h3><p>Density contours, sets, Fisher and Bingham statistics and eigenvectors, compiled hole by hole.</p></div>
-      <div class="feat"><h3>Sections and drawings</h3><p>Vertical, plan and inclined sections with corridors, traced polylines and DXF export.</p></div>
-      <div class="feat"><h3>Modelling</h3><p>Surfaces, bodies and faults ordered by age, with offsets, ended at the topography and the model volume.</p></div>
-      <div class="feat"><h3>3D view and downhole logs</h3><p>Holes, discs, models, meshes and rasters in one scene, and strip logs side by side.</p></div>
-      <div class="feat"><h3>Import, export and reports</h3><p>CSV, Excel, DXF, shapefiles and GeoTIFF in. Tables, figures, linework and model reports out.</p></div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Drillcore logging</h3>
+        <p>Planes are logged with alpha and beta, and lines either directly with alpha and beta or on a plane with gamma added, or true orientations and rake are typed as measured. Dip and dip direction, trend and plunge are computed as you type from the hole survey, desurveyed by minimum curvature, balanced tangential or tangential method.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18M3 12h18"/></svg></div>
+        <h3>Stereonet and statistics</h3>
+        <p>A lower hemisphere equal area net with Kamb and Gaussian density contours, great circles, Terzaghi weighting, colouring by any column and sets drawn as polygons on the net. The orientation statistics cover Fisher and Bingham distributions, the eigenvector analysis with Woodcock and Vollmer parameters, and the results can be saved as analyses and compiled for every hole.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 6l4 8 3-4 5 7z"/><path d="M3 21h18"/></svg></div>
+        <h3>Sections</h3>
+        <p>Vertical, plan and inclined sections with a corridor on either side of the plane, best fit sections through selected holes, structures drawn as ticks and arrows, and polylines and regions that can be traced, styled and exported to DXF.</p>
+      </div>
+            <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12 4 7.5M12 12l8-4.5M12 12v9"/></svg></div>
+        <h3>Surfaces and bodies</h3>
+        <p>Polylines drawn on sections and plans are extruded or lofted into surfaces, planes and contacts are fitted through measurements, form surfaces follow the logged orientations, and bodies are closed round logged intervals. In addition, every model keeps the recipe it was made from, so it is rebuilt whenever its lines or its data change.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h8l3 4h7"/><path d="M3 17h7l3-4"/><path d="M14 13h7"/></svg></div>
+        <h3>Faults and relations</h3>
+        <p>An age matrix of the structure types decides which surface ends against which and which fault offsets what it cuts, with exceptions for single pairs. A fault of finite extent displaces the surfaces round it with a three dimensional displacement field that dies out towards its tip line, and the triangulations can be remeshed so that they meet exactly along the contacts, ready for a numerical code.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3-4 5-6 8-6s5 3 10 2"/><path d="M3 20h18"/><path d="M7 9V5M17 11V6"/></svg></div>
+        <h3>Topography and volume</h3>
+        <p>A digital elevation model or a triangulated surface serves as the ground, georeferenced rasters such as orthophotos, scanned maps and geophysical grids are imported from GeoTIFF or from an image with its world file and draped on it with polylines, and every model ends at the topography and at the model volume unless either limit is switched off. Meshes imported from Leapfrog and other programs are cut on every section and give signed distances, so that hanging wall and footwall sets can be assigned from them.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div>
+        <h3>3D view</h3>
+        <p>Desurveyed hole traces, plane discs with their poles, lineation arrows, interval tubes, point markers, models, meshes and draped rasters in one scene, with a clip plane drawn as a line across the view, shaded relief on the topography, a hover card on every feature and a maximum intensity projection of the assays.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3v18M12 3v18M18 3v18"/><path d="M4 8h4M10 13h4M16 6h4M16 17h4"/></svg></div>
+        <h3>Downhole logs</h3>
+        <p>Strip logs of several holes side by side on a shared depth axis, with interval, point and orientation tracks, value bars for assays and other numeric columns, and the same colours and filters as every other view.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
+        <h3>Datasets, data sets and user columns</h3>
+        <p>Interval tables for lithology, alteration, RQD or assays and point tables sit beside the structures, and structures, intervals and polylines can be gathered into data sets from which models are built. User columns serve as filters, colour sources and set columns, a table of tens of thousands of rows stays responsive, and one hole can be made active for logging.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></div>
+        <h3>Import and export</h3>
+        <p>An import wizard for CSV and Excel files with column mapping and type checks, reloading of a file that has changed, and map linework from shapefiles and DXF files as polylines of the project. Every table is exported with its 3D coordinates, figures as PNG or SVG, polylines as DXF for Leapfrog or as shapefiles for a GIS, plans as georeferenced GeoTIFF or PNG with a world file, and figures for every hole in one batch.</p>
+      </div>
+      <div class="card">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="17" r="3"/></svg></div>
+        <h3>Filters and sets</h3>
+        <p>Filters by hole, set, key observation or any column apply to every view at once, and structure types are ticked on and off per view. Sets are ordinary columns of the table, so they are exported, filtered and coloured like any other value.</p>
+      </div>
+      <div class="card new">
+        <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16M5 8h6M5 14h10M5 20h14"/><circle cx="13" cy="8" r="1.5"/><circle cx="17" cy="14" r="1.5"/></svg></div>
+        <h3>Chronology and reports</h3>
+        <p>Overprinting relations between structures are logged as they are observed and compiled into a deformation sequence with its diagram, the sequence proposes the age matrix of the model, and the model report sets out every surface with its data, its relations, its warnings and its audit against the holes.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="gallery" class="alt">
+<section id="workflow">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Gallery</span>
-      <h2>Made for reading structure.</h2>
+    <div class="section-head">
+      <span class="eyebrow">Workflow</span>
+      <h2>Import the survey, log the core, check the result, build the model.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Set up the project</h3>
+        <p>Create a drillhole project and bring in the collars and surveys from CSV or Excel files through the import wizard. Existing structure files, whether with alpha and beta angles or with orientations measured by hand, are imported in the same way.</p>
+      </div>
+      <div class="step">
+        <h3>Log and check</h3>
+        <p>Type alpha, beta and gamma at the depth of each measurement. The true orientation appears at once, the pole is plotted on the net, and the structure is drawn in section, in 3D and on the log, so that a doubtful reading is caught while the core is still on the tray.</p>
+      </div>
+      <div class="step">
+        <h3>Interpret and deliver</h3>
+        <p>Define sets on the net, compare them between holes and against the modelled surfaces, and export the tables, figures and sections in the formats the rest of the project uses.</p>
+      </div>
+      <div class="step">
+        <h3>Model</h3>
+        <p>Trace the contacts and faults on the sections, extrude or loft them into surfaces, set the age order so that the faults cut and offset what is older than them, end everything at the topography, and remesh the set so that the surfaces meet along their contacts, ready for the geotechnical or resource model that follows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">In use</span>
+      <h2>The views work together.</h2>
+      <p>A measurement selected in one view is highlighted in every other, and the filters, sets and colours are shared between them.</p>
     </div>
     <div class="gallery">
-      <figure><div class="frame"><img src="img/stereonet.png" alt="Stereonet with contoured bedding poles and fault planes as great circles"></div><figcaption><b>Stereonet.</b> Contoured poles, fault planes and set statistics.</figcaption></figure>
-      <figure><div class="frame"><img src="img/section.png" alt="Section through a fence of holes with lithology, structures and interpreted surfaces"></div><figcaption><b>Section.</b> A fence of holes with lithology, structures and interpreted surfaces.</figcaption></figure>
-      <figure><div class="frame"><img src="img/threed.png" alt="3D view of a folded bedding surface offset by a fault, with drillholes"></div><figcaption><b>3D view.</b> Folded bedding offset by a fault, with the drillholes.</figcaption></figure>
-      <figure><div class="frame"><img src="img/downhole.png" alt="Downhole logs of three holes side by side"></div><figcaption><b>Downhole log.</b> Lithology, assays and orientations in three holes.</figcaption></figure>
-      <figure class="wide"><div class="frame"><img src="img/map.png" alt="Plan of outcrop mapping with bedding, fold axis and axial plane symbols round an antiform"></div><figcaption><b>Plan.</b> Outcrop mapping without drillholes, round a gently plunging antiform.</figcaption></figure>
+      <figure><img src="img/stereonet.png" alt="Stereonet with density contours and orientation sets" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Stereonet</div>'"><figcaption>Stereonet with the bedding poles contoured, the fault planes as great circles with their slickenlines, and the eigenvectors and mean of the bedding set.</figcaption></figure>
+      <figure><img src="img/section.png" alt="Section with hole traces, structures and a mesh cut" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Section</div>'"><figcaption>Section through a fence of holes with the lithology as strips, the structures as ticks and arrows, and the traces of the interpreted surfaces.</figcaption></figure>
+      <figure><img src="img/threed.png" alt="3D view of a folded bedding surface offset by a fault, against a large fault surface, with drillholes" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>3D view</div>'"><figcaption>3D view of a folded bedding surface offset by a fault, seen against a large fault surface coloured by elevation, with the drillholes and their plane discs and the mesh edges shown.</figcaption></figure>
+      <figure><img src="img/downhole.png" alt="Downhole log of several holes side by side" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Downhole log</div>'"><figcaption>Downhole logs of three holes with lithology, assay bars and the dip and dip direction of every structure.</figcaption></figure>
+      <figure class="wide"><img src="img/map.png" alt="Plan of field mapping with bedding, fold axis and axial plane symbols round an antiform" loading="lazy" onerror="this.outerHTML='<div class=&quot;placeholder&quot;>Plan</div>'"><figcaption>Plan of outcrop mapping, without drillholes: bedding, fold axis and axial plane readings drawn as tectonic symbols with their dips, an open antiform plunging gently to the north-north-east.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section id="stereonet">
-  <div class="wrap free">
-    <div>
-      <span class="eyebrow">Free</span>
-      <h2>The stereonet is free, for good.</h2>
-      <p>A stereonet project takes field measurements or any orientation data, with contouring, sets, statistics and figure export. It needs no licence and never expires, so it serves for teaching, mapping and a quick look at any data set.</p>
+  <div class="wrap">
+    <div class="callout">
+      <div>
+        <span class="eyebrow">Free, without limit</span>
+        <h2>The standalone stereonet costs nothing.</h2>
+        <p>A stereonet project holds field measurements or any other orientation data without drillholes and gives the whole of the net: contouring, sets, statistics, filters, colouring by column and figure export. It never expires and needs no licence. Therefore it serves for teaching, for field mapping and for a quick look at any orientation data.</p>
+      </div>
+      <img class="net" src="img/freenet.png" alt="Stereonet with the bedding poles contoured and the fault planes as great circles with their poles">
     </div>
-    <img src="img/freenet.png" alt="Stereonet with contoured bedding poles and fault planes as great circles" width="1252" height="1300">
   </div>
 </section>
 
-<section id="licensing" class="alt">
+<section id="licensing">
   <div class="wrap">
-    <div class="head">
+    <div class="section-head">
       <span class="eyebrow">Licensing</span>
-      <h2>Try everything, then decide.</h2>
+      <h2>Try everything first, then choose.</h2>
+      <p>The trial starts at the first launch and needs no registration. When it ends, a drillhole project still opens for thirty days, read only, so that every view and every export keeps working and nothing is locked away, and after that a licence is needed to open it. A licence is a yearly subscription, and therefore every update released while it runs is included.</p>
     </div>
     <div class="plans">
       <div class="plan">
-        <span class="name">Stereonet</span>
-        <span class="price">Free</span>
-        <span class="terms">No licence, no time limit</span>
+        <h3>Stereonet</h3>
+        <p class="price">Free, for as long as you like</p>
         <ul>
-          <li>Stereonet projects without drillholes</li>
-          <li>Contours, sets, statistics and filters</li>
-          <li>Figures as PNG and SVG</li>
-          <li>Included in every download</li>
+          <li>Stereonet projects for field and orientation data</li>
+          <li>Contouring, sets, statistics and filters</li>
+          <li>Figure export to PNG and SVG</li>
         </ul>
       </div>
-      <div class="plan main">
-        <span class="name">Full licence</span>
-        <span class="price">14 days free</span>
-        <span class="terms">Then a yearly licence for one computer</span>
+      <div class="plan featured">
+        <h3>Full licence</h3>
+        <p class="price">Per user and year, for one computer</p>
         <ul>
-          <li>Every feature, from logging to modelling</li>
-          <li>Trial needs no account or connection</li>
-          <li>All updates of the licence year included</li>
-          <li>Projects stay readable for 30 days after expiry</li>
+          <li>Every logging, section, 3D, downhole and modelling feature</li>
+          <li>Surfaces, bodies, fault relations, topography and remeshing</li>
+          <li>Import and export of every table and figure</li>
+          <li>A licence file installed offline, no account and every update of the year included</li>
         </ul>
-        <span class="spacer"></span>
-        <a class="btn btn-primary btn-plain" href="mailto:sales@sgeo.fi?subject=SGEO%20Studio%20licence">Ask for a licence</a>
+        <a class="btn btn-primary" href="mailto:sales@sgeo.fi?subject=SGEO%20Studio%20licence">Ask for a licence</a>
       </div>
     </div>
-    <div class="contacts">
-      <div><b>Licences and prices</b><a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a></div>
-      <div><b>Support</b><a href="mailto:studio@sgeo.fi">studio@sgeo.fi</a></div>
-    </div>
-    <p class="legal">Downloading and using SGEO Studio means accepting the <a href="eula.html">licence agreement</a>.</p>
+    <p class="fineprint">Licences are issued by Structural Geology Company Oy as signed licence files and checked on your computer. For prices, site licences, renewals and academic use, write to <a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a>. Problems with the application go to <a href="mailto:studio@sgeo.fi">studio@sgeo.fi</a>. Downloading and using the application means accepting the <a href="eula.html">licence agreement</a>, which is shown at first start and kept under Help.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div>© 2026 Structural Geology Company Oy · Turku, Finland</div>
-    <div class="links">
-      <a href="https://sgeo.fi">sgeo.fi</a>
-      <a href="mailto:sales@sgeo.fi">sales@sgeo.fi</a>
-      <a href="mailto:studio@sgeo.fi">studio@sgeo.fi</a>
-      <a href="eula.html">Licence agreement</a>
-      <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.7">Release notes</a>
+    <div>© <span id="year">2026</span> Structural Geology Company Oy · Turku, Finland</div>
+    <div>
+      <a href="https://sgeo.fi">sgeo.fi</a> &nbsp;·&nbsp;
+      <a href="https://github.com/StructuralGeologyCompany/SGEOStudio/releases/tag/v2.1.7">Release notes</a> &nbsp;·&nbsp;
+      <a href="mailto:sales@sgeo.fi">Contact</a>
     </div>
   </div>
 </footer>
 
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
